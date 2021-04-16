@@ -1,0 +1,44 @@
+{
+  "name": "ts-jwt-validator",
+  "version": "1.0.0",
+  "description": "This library can be used to validate JWT tokens coming from Azure AD B2C.",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc -w",
+    "lint": "eslint . --ext .ts",
+    "pretest": "npm run build && npm run lint",
+    "test": "jest --verbose --no-cache"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andiveloper/ts-jwt-validator.git"
+  },
+  "keywords": [
+    "azure",
+    "auth",
+    "openid",
+    "jwt"
+  ],
+  "author": "Andreas Koeninger",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/andiveloper/ts-jwt-validator/issues"
+  },
+  "homepage": "https://github.com/andiveloper/ts-jwt-validator#readme",
+  "devDependencies": {
+    "@types/jest": "^26.0.22",
+    "@types/jsonwebtoken": "^8.5.1",
+    "@typescript-eslint/eslint-plugin": "^4.21.0",
+    "@typescript-eslint/parser": "^4.21.0",
+    "eslint": "^7.23.0",
+    "jest": "^26.6.3",
+    "ts-jest": "^26.5.4",
+    "typescript": "^4.2.3"
+  },
+  "dependencies": {
+    "axios": "^0.21.1",
+    "jsonwebtoken": "^8.5.1",
+    "jwks-rsa": "^2.0.2"
+  }
+}
