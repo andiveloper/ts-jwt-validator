@@ -10,7 +10,8 @@
     "watch": "tsc -w",
     "lint": "eslint . --ext .ts",
     "pretest": "npm run build && npm run lint",
-    "test": "jest --verbose --no-cache"
+    "test": "jest --verbose --no-cache",
+    "prepublish": "npm run test"
   },
   "repository": {
     "type": "git",
