@@ -1,6 +1,6 @@
 {
   "name": "ts-jwt-validator",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "This library can be used to validate JWT tokens and signatures easily by providing a Open ID JWKS URI which hosts the public keys, e.g. for use with Azure AD B2C or auth0.",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -40,7 +40,7 @@
     "typescript": "^4.2.3"
   },
   "dependencies": {
-    "axios": "^0.21.1",
+    "axios": "^0.21.4",
     "jsonwebtoken": "^8.5.1",
     "jwks-rsa": "^2.0.2"
   },

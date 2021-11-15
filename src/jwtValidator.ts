@@ -25,7 +25,7 @@ export type JWTTokenPayload = {
     ver?: string;
     iss?: string;
     sub?: string;
-    aud?: string;
+    aud?: string | string[];
     nonce?: string;
     iat?: number;
     auth_time?: number;
@@ -50,10 +50,14 @@ export class JwtValidator {
         this.client = new JwksClient(jwksClientOptions);
     }
 
-    async validate(jwtToken: string, tokenVerifyOptions?: TokenVerifyOptions): Promise<JWTToken> {
+    public async validate(jwtToken: string, tokenVerifyOptions?: TokenVerifyOptions): Promise<JWTToken> {
         const token: JWTToken = this.decode(jwtToken);
         const key: string = await this.getSignatureKeyFromURL(token.header.kid);
-        await jwt.verify(jwtToken, key, tokenVerifyOptions);
+        jwt.verify(jwtToken, key, tokenVerifyOptions, function (err, decoded) {
+            if (err) {
+                throw new Error(`${err.name} - ${err.message}`);
+            }
+        });
         return token;
     }
 

@@ -105,3 +105,6 @@ dist
 
 # Output of tsc
 lib
+
+# IntelliJ files
+.idea

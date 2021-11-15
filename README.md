@@ -47,6 +47,7 @@ const jwtValidator: JwtValidator = new JwtValidator({
 });
 
 // validate the token and optionally audience, issuer, nonce, ...
+// if the validation fails an error is thrown
 // for other options and examples see: https://github.com/auth0/node-jsonwebtoken
 const jwt: JWTToken = await jwtValidator.validate(token, {
     audience: '...',
