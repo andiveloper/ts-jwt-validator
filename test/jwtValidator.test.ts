@@ -1,4 +1,4 @@
-import { JWTToken, JwtValidator } from '../src/jwtValidator';
+import { JWTToken, JwtValidator } from '../src';
 
 describe('JwtValidator', () => {
     it('retrieves the jwks_uri correctly', async () => {

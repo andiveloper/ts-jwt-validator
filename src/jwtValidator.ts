@@ -1,6 +1,6 @@
-import * as jwt from 'jsonwebtoken';
 import axios from 'axios';
 import { JwksClient, Options } from 'jwks-rsa';
+import { decode, verify, VerifyOptions } from 'jsonwebtoken';
 
 type OpenIdConfiguration = {
     jwks_uri: string;
@@ -40,7 +40,7 @@ export type JWTTokenPayload = {
     [key: string]: any; // eslint-disable-line @typescript-eslint/no-explicit-any
 };
 
-export type TokenVerifyOptions = jwt.VerifyOptions;
+export type TokenVerifyOptions = VerifyOptions;
 export type JWKSClientOptions = Options;
 
 export class JwtValidator {
@@ -53,7 +53,7 @@ export class JwtValidator {
     public async validate(jwtToken: string, tokenVerifyOptions?: TokenVerifyOptions): Promise<JWTToken> {
         const token: JWTToken = this.decode(jwtToken);
         const key: string = await this.getSignatureKeyFromURL(token.header.kid);
-        jwt.verify(jwtToken, key, tokenVerifyOptions, function (err, decoded) {
+        verify(jwtToken, key, tokenVerifyOptions, function (err, decoded) {
             if (err) {
                 throw new Error(`${err.name} - ${err.message}`);
             }
@@ -62,7 +62,7 @@ export class JwtValidator {
     }
 
     decode(jwtToken: string): JWTToken {
-        return jwt.decode(jwtToken, { complete: true }) as JWTToken;
+        return decode(jwtToken, { complete: true }) as JWTToken;
     }
 
     static async getSignatureKeysEndpoint(openIdConfigUrl: string): Promise<string> {
