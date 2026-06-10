@@ -1,5 +1,11 @@
 import { JWTToken, JwtValidator } from '../src';
 
+jest.mock('jwks-rsa', () => ({
+    JwksClient: jest.fn().mockImplementation(() => ({
+        getSigningKey: jest.fn(),
+    })),
+}));
+
 describe('JwtValidator', () => {
     it('retrieves the jwks_uri correctly', async () => {
         // given

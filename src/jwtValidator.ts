@@ -53,7 +53,7 @@ export class JwtValidator {
     public async validate(jwtToken: string, tokenVerifyOptions?: TokenVerifyOptions): Promise<JWTToken> {
         const token: JWTToken = this.decode(jwtToken);
         const key: string = await this.getSignatureKeyFromURL(token.header.kid);
-        verify(jwtToken, key, tokenVerifyOptions, function (err, decoded) {
+        verify(jwtToken, key, tokenVerifyOptions, function (err) {
             if (err) {
                 throw new Error(`${err.name} - ${err.message}`);
             }
