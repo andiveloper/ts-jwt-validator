@@ -8,7 +8,7 @@
   "scripts": {
     "build": "tsc",
     "watch": "tsc -w",
-    "lint": "eslint . --ext .ts",
+    "lint": "eslint \"**/*.ts\"",
     "pretest": "npm run build && npm run lint",
     "test": "jest --verbose --no-cache",
     "prepublish": "npm run test"
@@ -30,6 +30,8 @@
   },
   "homepage": "https://github.com/andiveloper/ts-jwt-validator#readme",
   "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@stylistic/eslint-plugin": "^5.10.0",
     "@types/jest": "^30.0.0",
     "@types/jsonwebtoken": "^9.0.10",
     "@typescript-eslint/eslint-plugin": "^8.61.0",
